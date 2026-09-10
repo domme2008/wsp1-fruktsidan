@@ -2,17 +2,24 @@ require 'debug'
 require "awesome_print"
 
 class App < Sinatra::Base
-    register Sinatra::Reloader
+  register Sinatra::Reloader
 
-    def db
-      return @db if @db
+  def db
+    return @db if @db
 
-      @db = SQLite3::Database.new(DB_PATH)
-      @db.results_as_hash = true
+    @db = SQLite3::Database.new(DB_PATH)
+    @db.results_as_hash = true
 
-      return @db
-    end
+    return @db
+  end
 
-    #TODO: Skriv routen hämtar alla frukter i databasen
+  #TODO: Skriv routen hämtar alla frukter i databasen
 
+  get '/fruits' do
+    @fruits = db.execute("SELECT * FROM products")
+    ap @fruits
+    erb(:"fruits/index")
+  end
 end
+
+
