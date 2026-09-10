@@ -19,4 +19,7 @@ db.execute('INSERT INTO products (name, tastiness, description) VALUES ("Päron"
 db.execute('INSERT INTO products (name, tastiness, description) VALUES ("Banan",  4, "En avlång gul frukt.")')
 db.execute('INSERT INTO products (name, tastiness, description) VALUES ("Mango",  9, "En god frukt med stor kärna.")')
 
+puts "Sorterar fruktnamnen i alfabetisk ordning (stigande)"
+db.execute('SELECT * FROM products ORDER BY name ASC')
+
 puts "✅ Databasen är seedad!"
