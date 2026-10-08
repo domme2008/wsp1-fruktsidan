@@ -32,8 +32,8 @@ class App < Sinatra::Base
   end
   
   get '/fruits/:id/edit' do | id |
-    @fruits = db.execute("SELECT * FROM products WHERE id=?", id) 
-    ap @fruits
+    @fruit = db.execute("SELECT * FROM products WHERE id=?", id).first
+    ap @fruit
     erb(:"fruits/edit")
   end
   
