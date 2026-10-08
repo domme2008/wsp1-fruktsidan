@@ -21,30 +21,45 @@ class App < Sinatra::Base
     erb(:"fruits/index")
   end
   
+  get '/fruits/new' do
+    erb(:"fruits/new")
+  end
+  
   get '/fruits/:name' do | name |
     @fruit = db.execute("SELECT * FROM products WHERE name=?", name).first
     ap @fruit
     erb(:"fruits/show")
   end
-
-  get '/fruits/new' do
-    erb(:"fruits/new")
+  
+  get '/fruits/:id/edit' do | id |
+    @fruits = db.execute("SELECT * FROM products WHERE id=?", id) 
+    ap @fruits
+    erb(:"fruits/edit")
   end
-
+  
   post '/fruits' do
-    ap @params
-    f_name = @params[:"fruit_name"]
-    f_tastiness = @params[:"fruit_tastiness"]
-    f_description = @params[:"fruit_description"]
+    ap params
+    f_name = params[:"fruit_name"]
+    f_tastiness = params[:"fruit_tastiness"]
+    f_description = params[:"fruit_description"]
     db.execute("INSERT INTO products (name, tastiness, description) VALUES (?,?,?);", [f_name, f_tastiness, f_description])
     redirect("/fruits")
   end
-
+  
   post '/fruits/:id/delete' do | id |
     db.execute("DELETE FROM products WHERE id=?", id)
     redirect("/fruits")
   end
   
+  post '/fruits/:id/update' do | id |
+    ap params
+    f_name = params[:"fruit_name"]
+    f_tastiness = params[:"fruit_tastiness"]
+    f_description = params[:"fruit_description"]
+    db.execute("UPDATE products SET name=?, tastiness=?, description=? WHERE id=?", [f_name, f_tastiness, f_description, id])
+    redirect("/fruits")
+  end 
+
 end
 
 
