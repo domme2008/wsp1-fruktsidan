@@ -85,3 +85,7 @@ blockquote {
     font-family: "Courier New", Courier, monospace;
 }
 
+img#icon {
+    width: 30px;
+}
+

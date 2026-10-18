@@ -1,5 +1,11 @@
 <h2>Mer info om: <%= @fruit['name'] %></h2>
-Smakpoäng: <%= '⭐' * @fruit['tastiness']%>
+Smakpoäng: 
+<% @fruit['tastiness'].to_i.times do %>
+    <img id="icon"src="/favicon.ico" alt="Bananer">
+<% end %>
 <br>
 <br>
 Beskrivning: <%= @fruit['description']%>
+<br>
+<br>
+Kategori: <a href="/categories/<%= @category['name']%>"><%= @category['name']%></a>

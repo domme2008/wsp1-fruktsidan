@@ -1,0 +1,7 @@
+<h2>Alla kategorier</h2>
+
+<ul>
+	<% @categories.each do |category| %>
+		<li><a href="categories/<%= category['name']%>"><%= category['name']%></a> <i><%= category["description"] %></i></li>
+	<% end %>
+</ul>
