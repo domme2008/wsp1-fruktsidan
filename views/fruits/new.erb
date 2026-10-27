@@ -5,7 +5,7 @@
     <label>Smakpoäng: <input type="text" name="fruit_tastiness"></label>
     <label>Beskrivning: <input type="text" name="fruit_description"></label>
     <label>Kategori: 
-        <select name="category_id">
+        <select name="fruit_category">
 	        <% @categories.each do |category| %>
 		        <option value="<%= category['id'] %>"><%= category['name'] %></option>
             <% end %>

@@ -1,0 +1,7 @@
+<h2>Uppdatera kategori</h2>
+
+<form action="/categories/<%= @category["id"]%>/update" method="post">
+    <label>Namn: <input type="text" name="category_name" value="<%= @category["category_name"] %>"></label>
+    <label>Beskrivning: <input type="text" name="category_description" value="<%= @category["category_description"]%>"></label>
+    <input type="submit" value="Ändra">
+</form>

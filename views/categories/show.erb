@@ -1,10 +1,11 @@
-<h2><%= @category['name'] %></h2>
+<h2>Mer info om: <%= @category['name'] %></h2>
+Beskrivning:
 <%= @category['description'] %>
 <h2>Frukter i den här kategorin:</h2>
 <ul>
     <% @fruits.each do |fruit| %>
 		<li>
-		<a href="/fruits/<%= fruit["name"]%>"><%= fruit["name"] %></a>
+		<a href="/fruits/<%= fruit["id"]%>"><%= fruit["name"] %></a>
         </li>
     <% end %>        
 </ul>

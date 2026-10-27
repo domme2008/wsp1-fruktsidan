@@ -2,6 +2,12 @@
 
 <ul>
 	<% @categories.each do |category| %>
-		<li><a href="categories/<%= category['name']%>"><%= category['name']%></a> <i><%= category["description"] %></i></li>
+		<li>
+			<a href="categories/<%= category['id']%>"><%= category['name']%></a> <i><%= category["description"] %></i>
+		</li>
+		<form class="delete" action="/categories/<%= category["id"] %>/delete" method="post">
+			<input type="submit" value="Ta bort">
+		</form>
+		<a class="edit" href="/categories/<%=category["id"]%>/edit">Ändra</a>
 	<% end %>
 </ul>
